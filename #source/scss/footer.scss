@@ -1,0 +1,36 @@
+footer {
+}
+//====================================================================================================
+
+.footer-body {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  @media (max-width: $md4+px) {
+    display: block;
+    text-align: center;
+  }
+  a {
+      margin-left: 35px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  & p,
+  a {
+    color: #646667;
+    font-family: "Montserrat";
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    @media (max-width: $md4+px) {
+      display: block;
+      margin: 0 0 20px 0;
+    }
+  }
+}
+
+//
+
+//====================================================================================================

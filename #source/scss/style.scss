@@ -1,0 +1,591 @@
+//<МИКСИНЫ>===============================================================================================
+@mixin anim($time, $delay) {
+  -webkit-transition: all $time ease $delay;
+  -moz-transition: all $time ease $delay;
+  -ms-transition: all $time ease $delay;
+  -o-transition: all $time ease $delay;
+  transition: all $time ease $delay;
+}
+@mixin anim_cubic($time, $delay) {
+  -webkit-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+  -moz-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+  -ms-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+  -o-transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+  transition: all $time cubic-bezier(0.68, -0.55, 0.265, 1.55) $delay;
+}
+@mixin rotate($deg) {
+  -moz-transform: rotate($deg);
+  -ms-transform: rotate($deg);
+  -webkit-transform: rotate($deg);
+  -o-transform: rotate($deg);
+  transform: rotate($deg);
+}
+@mixin scale($num) {
+  -moz-transform: scale($num);
+  -ms-transform: scale($num);
+  -webkit-transform: scale($num);
+  -o-transform: scale($num);
+  transform: scale($num);
+}
+@mixin skew($num) {
+  -webkit-transform: skewX($num);
+  -moz-transform: skewX($num);
+  -ms-transform: skewX($num);
+  -o-transform: skewX($num);
+  transform: skewX($num);
+}
+@mixin cnt($h) {
+  display: flex;
+  flex-direction: column;
+  height: $h;
+  text-align: center;
+  align-items: stretch;
+  justify-content: center;
+}
+@mixin tr($x, $y, $z) {
+  transform: translate3d($x, $y, $z);
+}
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  font-size: 0;
+}
+@mixin flexorder($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+//<Подключаем шрифты>=======================================================================================
+
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=PT+Serif:400,700&display=swap");
+
+//</Подключаем шрифты>=======================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontfamily: "";
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>=======================================================================================================
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$minwidth: 320px;
+$mw: 1170;
+$md1: $mw + 12;
+$md2: 992.98;
+$md3: 767.98;
+$md4: 479.98;
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+aside,
+nav,
+footer,
+header,
+section {
+  display: block;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: $minwidth;
+  position: relative;
+  width: 100%;
+  color: #000;
+}
+body {
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  font-family: $fontfamily;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  &.lock {
+    overflow: hidden;
+    @media (max-width: $md3+px) {
+      width: 100%;
+      position: fixed;
+      overflow: hidden;
+    }
+  }
+}
+input,
+button,
+textarea {
+  font-family: $fontfamily;
+}
+input::-ms-clear {
+  display: none;
+}
+button {
+  cursor: pointer;
+}
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+a,
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  &.loaded {
+  }
+}
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container {
+  max-width: $mw + px;
+  margin: 0 auto;
+  width: 100%;
+  @media (max-width: $md1+px) {
+    max-width: 970px;
+  }
+  @media (max-width: $md2+px) {
+    max-width: 750px;
+  }
+  @media (max-width: $md3+px) {
+    max-width: none;
+    padding: 0 10px;
+  }
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+@import "popup.scss";
+@import "header.scss";
+@import "footer.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+
+.general-meeting {
+  display: flex;
+  margin-bottom: 100px;
+  flex-direction: column;
+  //   outline: 1px solid red;
+}
+.general-image {
+  height: 411px;
+  overflow: hidden;
+  position: relative;
+  @media (max-width: $md1+px) {
+    height: 341px;
+  }
+  @media (max-width: $md2+px) {
+    height: 263px;
+  }
+  @media (max-width: $md3+px) {
+    height: 250px;
+  }
+  margin-bottom: 30px;
+  //   outline: 3px solid red;
+  img {
+    display: block;
+    position: absolute;
+    @media (max-width: $md3+px) {
+      height: 250px;
+    }
+  }
+  .main_background {
+    object-fit: cover;
+    @media (max-width: $md1+px) {
+      width: 970px;
+    }
+    @media (max-width: $md2+px) {
+      width: 100%;
+    }
+  }
+  .mask {
+    z-index: 1;
+    width: 35%;
+  }
+  .general-image-text {
+    position: absolute;
+    z-index: 2;
+    left: 390px;
+    top: 240px;
+    text-shadow: 0 3px 1px rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-family: "PT Serif - Bold";
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 48px;
+    text-align: left;
+    text-transform: uppercase;
+    //  outline: 1px solid white;
+    @media (max-width: $md1+px) {
+      padding-right: 20px;
+      font-size: 25px;
+      top: 230px;
+      left: 350px;
+      line-height: 40px;
+    }
+    @media (max-width: $md2+px) {
+      font-size: 15px;
+      top: 150px;
+      left: 300px;
+      line-height: 30px;
+    }
+    @media (max-width: $md3+px) {
+      top: auto;
+      left: auto;
+      margin: 70px 10px 0 10px;
+      text-align: center;
+    }
+  }
+}
+
+.general-text {
+  flex: auto;
+  margin-bottom: 40px;
+  padding: 0 100px;
+  color: #646667;
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 36px;
+  text-align: center;
+  @media (max-width: $md1+px) {
+    padding: 0 10px;
+    text-align: justify;
+  }
+}
+
+.btn {
+  align-self: center;
+  height: 56px;
+  outline: 1px solid black;
+  a {
+    display: flex;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to left, #007397 50%, #164c62 50%),
+      linear-gradient(to right, #007397 50%, #164c62 50%), #164c62;
+    background-size: 200%, 200%;
+    background-position: 149% 0%, -49% 0%;
+    background-repeat: no-repeat;
+    color: white;
+    font-family: "Montserrat";
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0px 30px;
+    transition: all 0.5s ease-out;
+    //  outline: 2px solid red;
+    @media (max-width: $md4+px) {
+      font-size: 14px;
+    }
+    &:hover {
+      background-position: 200% 0%, -100% 0%;
+    }
+  }
+  @media (max-width: $md3+px) {
+    align-self: stretch;
+  }
+}
+
+// ===========================================================
+
+.investor-relations {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 90px;
+}
+.investor-relations-title {
+  // Style for "Investor R"
+  margin-bottom: 40px;
+  color: #3c3f3d;
+  font-family: "PT Serif";
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 48px;
+  text-align: left;
+  text-transform: uppercase;
+}
+.investor-relations-text {
+  // Style for "We’re Inve"
+  flex: auto;
+  max-width: 670px;
+  margin-bottom: 48px;
+  color: #646667;
+  font-family: "Montserrat";
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 36px;
+  text-align: justify;
+  @media (max-width: $md3+px) {
+    max-width: none;
+  }
+}
+.investor-relations-numbers {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  @media (max-width: $md3+px) {
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+}
+.investor-relations-column {
+  text-align: center;
+  @media (max-width: $md3+px) {
+    flex: 1 1 33%;
+    margin-bottom: 30px;
+  }
+}
+
+.investor-relations-column-middle {
+  padding: 0 30px;
+  @media (max-width: $md1+px) {
+    padding: 0;
+  }
+  @media (max-width: $md4+px) {
+    flex: 1 1 100%;
+  }
+}
+
+.investor-relations-digit {
+  // Style for "77.95"
+  margin-bottom: 10px;
+  color: #007397;
+  font-family: "PT Serif";
+  font-size: 54px;
+  font-weight: 400;
+  @media (max-width: $md2+px) {
+    font-size: 35px;
+  }
+}
+.inverstor-relations-title {
+  // Style for "Share Pric"
+  color: #aec3d4;
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 400;
+  @media (max-width: $md2+px) {
+    font-size: 14px;
+  }
+}
+
+.btn-investor-relations {
+  align-self: start;
+  a {
+    padding: 0 80px;
+  }
+  @media (max-width: $md3+px) {
+    align-self: stretch;
+  }
+}
+
+// ==============================================================
+.news-media {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 96px;
+}
+
+.without-margin {
+  margin: 0;
+  flex: 4 1 auto;
+  @media (max-width: $md3+px){
+	  flex: 0 0 100%;
+	  margin-bottom: 48px;
+	  
+  }
+}
+
+.tabs {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  color: #d3cfce;
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: pre-line;
+  text-align: center;
+}
+
+input[type="radio"] {
+  display: none;
+  &:checked + label {
+    color: #007397;
+  }
+}
+
+#tab-news:checked ~ .news,
+#tab-press-release:checked ~ .press-release,
+#tab-all:checked ~ .news-media-item {
+  display: flex;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0;
+  margin-bottom: 48px;
+}
+
+.news-media-item {
+  display: none;
+  flex-direction: column;
+  flex: 0 0 30%;
+  font-family: "Montserrat";
+  text-align: left;
+//   outline: 1px solid black;
+  @media (max-width: $md1+px) {
+    flex: 0 0 300px;
+  }
+  @media (max-width: $md2+px) {
+    flex: 0 0 48%;
+    margin-bottom: 48px;
+  }
+  @media (max-width: $md3+px) {
+    flex: 0 0 100%;
+  }
+}
+
+.news-media-picture {
+  margin-bottom: 32px;
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+  height: 370px;
+  @media (max-width: $md1+px) {
+    width: 300px;
+  }
+  @media (max-width: $md2+px) {
+    width: 100%;
+  }
+  & > div {
+    position: absolute;
+    z-index: 1;
+    color: #fff;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  & > div:first-of-type {
+    margin: 24px 0px 0px 30px;
+    font-size: 12px;
+    letter-spacing: 0.75px;
+  }
+  & > div:last-of-type {
+    margin: 229px 0px 0px 30px;
+    font-size: 24px;
+    letter-spacing: 1px;
+    line-height: 32px;
+  }
+
+  img {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.news-media-text {
+  margin-bottom: 38px;
+  flex: auto;
+  color: #646667;
+  font-size: 16px;
+  line-height: 32px;
+  //   outline: 1px solid black;
+}
+
+.news-media-read {
+  color: #007397;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  //   outline: 1px solid black;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// ===========================================================
+
+.learn-more{
+	margin-bottom: 48px;
+}
+
+
+//====================================================================================================
+
+//</ОСНОВНОЙ БЛОК>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+@import "forms.scss";
+@import "ui.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
